@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="./images/vector-mesto-russia.svg" class="header__logo">
+      <div class="header__line"></div>
+    </header>
+    <main>
+      <section class="profile">
+        <img src="./images/avatar-kusto.jpg" class="profile__avatar">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__button_edit"><img src="./images/edit-button.svg" alt="редактировать" class="profile__image_edit"></button>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__button_add"><img src="./images/add-button.svg" alt="добавить" class="profile__image_add"></button>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="element">
+            <img src="./images/element-karachaevsk.jpg" class="element__image">
+            <h2 class="element__name">Карачаевск</h2>
+            <button type="button" class="element__button_like"><img src="./images/element-like.svg" alt="нравится" class="element__like"></button>
+          </li>
+          <li class="element">
+            <img src="./images/element-elbrus.png" class="element__image">
+            <h2 class="element__name">Гора Эльбрус</h2>
+            <button type="button" class="element__button_like"><img src="./images/element-like.svg" alt="нравится" class="element__like"></button>
+          </li>
+          <li class="element">
+            <img src="./images/element-dombay.png" class="element__image">
+            <h2 class="element__name">Домбай</h2>
+            <button type="button" class="element__button_like"><img src="./images/element-like.svg" alt="нравится" class="element__like"></button>
+          </li>
+          <li class="element">
+            <img src="./images/element-elbrus.png" class="element__image">
+            <h2 class="element__name">Гора Эльбрус</h2>
+            <button type="button" class="element__button_like"><img src="./images/element-like.svg" alt="нравится" class="element__like"></button>
+          </li>
+          <li class="element">
+            <img src="./images/element-dombay.png" class="element__image">
+            <h2 class="element__name">Домбай</h2>
+            <button type="button" class="element__button_like"><img src="./images/element-like.svg" alt="нравится" class="element__like"></button>
+          </li>
+          <li class="element">
+            <img src="./images/element-karachaevsk.jpg" class="element__image">
+            <h2 class="element__name">Карачаево-Черкесия</h2>
+            <button type="button" class="element__button_like"><img src="./images/element-like.svg" alt="нравится" class="element__like"></button>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">&commat; 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close"><img src="./images/popup-close-icon.svg" class="popup__close_icon"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form">
+          <input type="text" class="popup__input_type-name">
+          <input type="text" class="popup__input_type-job">
+          <button type="submit" class="popup__submit">Сохранить</button>
+        </form>
+      </div>  
+    </div>
+  </div>
+  <script src="./script/script.js"></script>
+</body>
+</html>

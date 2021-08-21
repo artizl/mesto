@@ -1,0 +1,11 @@
+.element__button_like {
+  width: 22px;
+  margin: 5px auto auto 0;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  background-color: #fff;
+  border: 0px solid #FFFFFF;
+  box-sizing: border-box;
+}
