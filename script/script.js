@@ -1,6 +1,6 @@
 let popup = document.querySelector('.popup');
 let profileButtonEdit = document.querySelector('.profile__button_edit');
-let popupClose = document.querySelector('.popup__close')
+let popupClose = document.querySelector('.popup__button_close')
 
 function togglePopup() {
   popup.classList.toggle('popup__opened')
@@ -12,8 +12,8 @@ popupClose.addEventListener('click', togglePopup);
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__form');
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__input_type-name');
-let jobInput = document.querySelector('.popup__input_type-job');
+let nameInput = document.querySelector('.popup__input_name');
+let jobInput = document.querySelector('.popup__input_job');
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__description');
 
