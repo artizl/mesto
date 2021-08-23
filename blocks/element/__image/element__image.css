@@ -1,9 +1,0 @@
-.element__image {
-  padding: 0;
-  margin: 0;
-  width: 282px;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
-}
