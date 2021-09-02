@@ -1,0 +1,12 @@
+.card__delete-button {
+  margin: 0;
+  padding: 0;
+  width: 18px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px solid rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  cursor: pointer;
+}

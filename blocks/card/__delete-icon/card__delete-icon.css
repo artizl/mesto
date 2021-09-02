@@ -1,0 +1,10 @@
+.card__delete-icon {
+    width: 18px;
+    opacity: 1;
+    transition: opacity 0.8s;
+  }
+  
+.card__delete-icon:hover {
+    opacity: 0.5;
+    transition: opacity 0.4s;
+}

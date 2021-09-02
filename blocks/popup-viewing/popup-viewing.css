@@ -1,4 +1,4 @@
-.popup {
+.popup-viewing {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   visibility: hidden;
   opacity: 0;
   transition: all 0.8s ease-in-out;

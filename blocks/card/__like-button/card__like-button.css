@@ -1,5 +1,6 @@
 .card__like-button {
   width: 22px;
+  padding: 0;
   margin: 5px auto auto 0;
   grid-column-start: 2;
   grid-column-end: 2;
