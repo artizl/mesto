@@ -27,7 +27,7 @@ formElementEditProfile.addEventListener('submit', formSubmitHandler);
 formElementEditProfile.addEventListener('submit', togglePopupEditProfile);
 
 const copyProfileTextToInput = () => {
-  if (!popupEditProfile.classList.contains('popup__is-opened')) {
+  if (popupEditProfile.classList.contains('popup_is-opened')) {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
   }
@@ -137,7 +137,7 @@ initialCards.forEach((card) => {
 const popupViewing = document.querySelector('.popup-viewing');
 const popupViewingTitle = document.querySelector('.popup-viewing__title');
 const popupViewingImage = document.querySelector('.popup-viewing__image');
-const popupCloseViewing = document.querySelector('.popup__close-button_viewing');
+const popupCloseViewing = document.querySelector('.popup-viewing__close-button');
 
 const togglePopupViewing = (popup) => {
   popup.classList.toggle('popup_is-opened');

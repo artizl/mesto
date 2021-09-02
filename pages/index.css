@@ -46,5 +46,7 @@
 @import url("../blocks/popup-viewing/__conteiner/popup-viewing__conteiner.css");
 @import url("../blocks/popup-viewing/__image/popup-viewing__image.css");
 @import url("../blocks/popup-viewing/__title/popup-viewing__title.css");
+@import url("../blocks/popup-viewing/__close-button/popup-viewing__close-button.css");
+@import url("../blocks/popup-viewing/__close-icon/popup-viewing__close-icon.css");
 
 @import url("../blocks/popup/_is-opened/popup_is-opened.css");
