@@ -52,8 +52,6 @@ const addCard = (container, card) => {
   container.prepend(card);
 };
 
-//addCard(cardsListElement, createCard(card));
-
 //добавление поста из попапа
 const postingFormHandler = (event) => {
   event.preventDefault();
