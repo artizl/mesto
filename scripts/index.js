@@ -34,34 +34,37 @@ const createCard = (card) => {
   cardElement.querySelector('.card__delete-button').addEventListener('click', removeCardHandler);
   cardElement.querySelector('.card__like-button').addEventListener('click', toggleCardLike);
 
-  addCard(cardElement);
+  const popupViewingOpenButton = cardElement.querySelector('.card__image'); 
+   
+  popupViewingOpenButton.addEventListener('click', (event) => { 
+    popupViewingImage.src = event.target.src; 
+    popupViewingImage.alt = event.target.closest('.card').querySelector('.card__title').textContent; 
+    popupViewingTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent; 
+   
+    openPopup(popupViewing); 
+  });
+
+  return cardElement;
 };
 
 //добавление карточки в список
-const addCard = (card) => {
-  cardsListElement.prepend(card);
-
-  const popupViewingOpenButton = document.querySelector('.card__image');
-  
-  popupViewingOpenButton.addEventListener('click', (event) => {
-    popupViewingImage.src = event.target.src;
-    popupViewingImage.alt = event.target.closest('.card').querySelector('.card__title').textContent;
-    popupViewingTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent;
-  
-    openPopup(popupViewing);
-  });
+const addCard = (container, card) => { 
+  container.prepend(card);
 };
+
+//addCard(cardsListElement, createCard(card));
 
 //добавление поста из попапа
 const postingFormHandler = (event) => {
   event.preventDefault();
-
-  createCard({
+  addCard(cardsListElement, createCard({
     link: linkInput.value,
     name: titleInput.value
-  });
+  }));
 
   formElementAddCard.reset();
+
+  closePopup(popupAddCard);
 };
 
 //открытие попапа
@@ -88,6 +91,8 @@ const formSubmitHandler = (evt) => {
   evt.preventDefault(); 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
+
+  closePopup(popupEditProfile);
 };
 
 //обработчики событий
@@ -100,9 +105,6 @@ profileButtonEdit.addEventListener('click', () => {
 });
 
 formElementEditProfile.addEventListener('submit', formSubmitHandler);
-formElementEditProfile.addEventListener('submit', () => {
-  closePopup(popupEditProfile);
-});
 
 popupCloseEditProfile.addEventListener('click', () => {
   closePopup(popupEditProfile);
@@ -114,9 +116,6 @@ profileButtonAdd.addEventListener('click', () => {
 });
 
 formElementAddCard.addEventListener('submit', postingFormHandler);
-formElementAddCard.addEventListener('submit', () => {
-  closePopup(popupAddCard);
-});
 
 popupCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard);
@@ -157,5 +156,5 @@ const initialCards = [
 ];
 
 initialCards.forEach((card) => {
-  createCard(card);
+  addCard(cardsListElement, createCard(card));
 });
