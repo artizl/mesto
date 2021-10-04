@@ -1,3 +1,6 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const profileButtonEdit = document.querySelector('.profile__edit-button');
 const popupCloseEditProfile = document.querySelector('.popup__close-button_edit-profile');
@@ -16,7 +19,6 @@ const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_link');
 
 const cardsListElement = document.querySelector('.cards__list');
-const cardTemplate = document.querySelector('#card-template').content;
 
 const popupViewing = document.querySelector('.popup-viewing');
 const popupViewingContainer = document.querySelector('.popup-viewing__conteiner');
@@ -27,41 +29,33 @@ const popupCloseViewing = document.querySelector('.popup-viewing__close-button')
 const popupContainerEditProfile = document.querySelector('.popup__container_edit-profile');
 const popupContainerAddCard = document.querySelector('.popup__container_add-card');
 
+//2 возвращает объект класса из эл-та массива
+const createCard = (dataCard) => {
+  return new Card(dataCard.name, dataCard.link, openPopupViewing);
+}
 
 
+//
+const renderCard = (container, card) => {
+  const cardElement = card.generateCard();
+  container.prepend(cardElement);
+}
 
-//создание карточки
-const createCard = (card) => {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  const popupViewingOpenButton = cardElement.querySelector('.card__image');
-  popupViewingOpenButton.src = card.link;
-  popupViewingOpenButton.alt = card.name;
-  cardElement.querySelector('.card__title').textContent = card.name;
-  cardElement.querySelector('.card__delete-button').addEventListener('click', removeCardHandler);
-  cardElement.querySelector('.card__like-button').addEventListener('click', toggleCardLike);
-   
-  popupViewingOpenButton.addEventListener('click', () => { 
-    popupViewingImage.src = card.link; 
-    popupViewingImage.alt = card.name;
-    popupViewingTitle.textContent = card.name; 
-   
-    openPopup(popupViewing); 
-  });
+//открытие попапа с просмотром изображения
+const openPopupViewing = (name, link) => {
+  popupViewingImage.src = link;
+  popupViewingImage.alt = name;
+  popupViewingTitle.textContent = name;
 
-  return cardElement;
-};
-
-//добавление карточки в список
-const addCard = (container, card) => { 
-  container.prepend(card);
-};
+  openPopup(popupViewing);
+}
 
 //добавление поста из попапа
 const postingFormHandler = (event) => {
   event.preventDefault();
-  addCard(cardsListElement, createCard({
-    link: linkInput.value,
-    name: titleInput.value
+  renderCard(cardsListElement, createCard({
+    name: titleInput.value,
+    link: linkInput.value
   }));
 
   formElementAddCard.reset();
@@ -81,15 +75,6 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closeByEscape);
 };
 
-//удаление карточки
-const removeCardHandler = (evt) => {
-  evt.target.closest('.card').remove();
-};
-
-//лайки
-const toggleCardLike = (evt) => {
-  evt.target.classList.toggle('card__like-button_active');
-};
 
 //автозаполнение формы ред. профиля
 const formSubmitHandler = (evt) => {
@@ -191,11 +176,11 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach((card) => {
-  addCard(cardsListElement, createCard(card));
+//проходим по массиву 1
+initialCards.forEach((cardData) => {
+  const card = createCard(cardData);
+  renderCard(cardsListElement, card);
 });
-
-
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -206,3 +191,9 @@ const validationConfig = {
   errorClass: 'error_visible'
 };
 
+
+const validatorProfileForm = new FormValidator(validationConfig, formElementEditProfile);
+const validatorAddCard = new FormValidator(validationConfig, formElementAddCard);
+
+validatorProfileForm.enableValidation();
+validatorAddCard.enableValidation();
