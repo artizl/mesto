@@ -33,8 +33,6 @@ const popupContainerAddCard = document.querySelector('.popup__container_add-card
 const nameError = document.querySelector('#name-profile-error');
 const jobError = document.querySelector('#job-profile-error');
 
-const popupInputError = document.querySelectorAll('.popup__input_error');
-
 //2 возвращает объект класса из эл-та массива
 const createCard = (dataCard) => {
   return new Card(dataCard.name, dataCard.link, cardTemplate, openPopupViewing);
