@@ -1,9 +1,8 @@
 export default class Card  {
-  static _template = document.querySelector('#card-template').content;
-
-  constructor(name, link, openPopupViewing) {
+  constructor(name, link, cardTemplate, openPopupViewing) {
     this._name = name;
     this._link = link;
+    this._cardTemplate = cardTemplate;
     this._openPopupViewing = openPopupViewing;
   };
 
@@ -18,9 +17,9 @@ export default class Card  {
 
   //клонируем темпл эл-т
   _getTemplate() {
-    this._cardCloneTemplate = Card._template.cloneNode(true).children[0];
+    const cardElement = this._cardTemplate.cloneNode(true).children[0];
 
-    return this._cardCloneTemplate;
+    return cardElement;
   };
 
   //удаление карточки

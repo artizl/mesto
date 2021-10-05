@@ -19,6 +19,7 @@ const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_link');
 
 const cardsListElement = document.querySelector('.cards__list');
+const cardTemplate = document.querySelector('#card-template').content;
 
 const popupViewing = document.querySelector('.popup-viewing');
 const popupViewingContainer = document.querySelector('.popup-viewing__conteiner');
@@ -31,7 +32,7 @@ const popupContainerAddCard = document.querySelector('.popup__container_add-card
 
 //2 возвращает объект класса из эл-та массива
 const createCard = (dataCard) => {
-  return new Card(dataCard.name, dataCard.link, openPopupViewing);
+  return new Card(dataCard.name, dataCard.link, cardTemplate, openPopupViewing);
 }
 
 
@@ -75,7 +76,7 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closeByEscape);
 };
 
-
+///////////////////////////////////////////////////////
 //автозаполнение формы ред. профиля
 const formSubmitHandler = (evt) => {
   evt.preventDefault();
@@ -97,9 +98,12 @@ const closeByEscape = (evt) => {
 
 //попап ред.профиля
 profileButtonEdit.addEventListener('click', () => {
+  if(nameInput.value.length === 0) {
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = jobProfile.textContent;
+  };
+  
   openPopup(popupEditProfile);
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = jobProfile.textContent;
 });
 
 formElementEditProfile.addEventListener('submit', formSubmitHandler);
