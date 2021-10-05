@@ -77,7 +77,7 @@ const closePopup = (popup) => {
 };
 
 ///////////////////////////////////////////////////////
-//автозаполнение формы ред. профиля
+//ред. профиля из попапа
 const formSubmitHandler = (evt) => {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
@@ -96,12 +96,10 @@ const closeByEscape = (evt) => {
 
 //обработчики событий
 
-//попап ред.профиля
+//автозаполнение формы ред. профиля, открытие попапа ред.проф.
 profileButtonEdit.addEventListener('click', () => {
-  if(nameInput.value.length === 0) {
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
-  };
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
   
   openPopup(popupEditProfile);
 });
