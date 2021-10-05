@@ -38,7 +38,6 @@ export default class FormValidator {
       this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
-      
     }
   };
 
