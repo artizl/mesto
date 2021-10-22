@@ -1,17 +1,18 @@
 export default class Card  {
-  constructor(name, link, cardTemplate, openPopupViewing) {
-    this._name = name;
-    this._link = link;
+  constructor(data, cardTemplate, handleCardClick) {
+    this._name = data.name;
+    this._link = data.link;
     this._cardTemplate = cardTemplate;
-    this._openPopupViewing = openPopupViewing;
+    this._handleCardClick = handleCardClick;
   };
 
   //добавляем события
   _setEventListener() {
     this._cardElement.querySelector('.card__delete-button').addEventListener('click', this._removeCardHandler);
     this._cardElement.querySelector('.card__like-button').addEventListener('click', this._toggleCardLike);
+    //открытие попапа с изображнием 1 шаг
     this._cardElement.querySelector('.card__image').addEventListener('click', () => {
-      this._openPopupViewing(this._name, this._link);
+      this._handleCardClick({ name: this._name, link: this._link });
     });
   };
 

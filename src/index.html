@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 <body class="body">
   <div class="page">
     <header class="header">
-      <img src="./images/vector-mesto-russia.svg" alt="Место лого" class="header__logo">
+      <img src="<%=require('./images/vector-mesto-russia.svg')%>" alt="Место лого" class="header__logo">
     </header>
     <main>
       <section class="profile">
-        <img src="./images/avatar-kusto.jpg" alt="аватарка" class="profile__avatar">
+        <img src="<%=require('./images/avatar-kusto.jpg')%>" alt="аватарка" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-button"><img src="./images/edit-button.svg" alt="редактировать" class="profile__edit-image"></button>
+          <button type="button" class="profile__edit-button"><img src="<%=require('./images/edit-button.svg')%>" alt="редактировать" class="profile__edit-image"></button>
           <p class="profile__description">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-button"><img src="./images/add-button.svg" alt="добавить" class="profile__add-image"></button>
+        <button type="button" class="profile__add-button"><img src="<%=require('./images/add-button.svg')%>" alt="добавить" class="profile__add-image"></button>
       </section>
       <section class="cards">
         <ul class="cards__list"></ul>
@@ -30,12 +29,12 @@
     </footer>
     <article class="popup popup_edit-profile">
       <div class="popup__container popup__container_edit-profile">
-        <button type="button" class="popup__close-button popup__close-button_edit-profile"><img src="./images/popup-close-icon.svg" alt="закрытие окна ввода данных" class="popup__close-icon"></button>
+        <button type="button" class="popup__close-button popup__close-button_edit-profile"><img src="<%=require('./images/popup-close-icon.svg')%>" alt="закрытие окна ввода данных" class="popup__close-icon"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form popup__form_edit-profile" name="profileeditform" novalidate>
-          <input type="text" id="name-profile" name="profile-name" class="popup__input popup__input_type_name" placeholder="Имя" required minlength="2" maxlength="40">
+          <input type="text" id="name-profile" name="name" class="popup__input popup__input_type_name" placeholder="Имя" required minlength="2" maxlength="40">
           <span id="name-profile-error" class="error"></span>
-          <input type="text" id="job-profile" name="profile-job" class="popup__input popup__input_type_job" placeholder="Профессиональная деятельность" required minlength="2" maxlength="200">
+          <input type="text" id="job-profile" name="job" class="popup__input popup__input_type_job" placeholder="Профессиональная деятельность" required minlength="2" maxlength="200">
           <span id="job-profile-error" class="error"></span>
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
@@ -44,7 +43,7 @@
 
     <article class="popup popup_add-card">
       <div class="popup__container popup__container_add-card">
-        <button type="button" class="popup__close-button popup__close-button_add-card"><img src="./images/popup-close-icon.svg" alt="закрытие окна ввода данных" class="popup__close-icon"></button>
+        <button type="button" class="popup__close-button popup__close-button_add-card"><img src="<%=require('./images/popup-close-icon.svg')%>" alt="закрытие окна ввода данных" class="popup__close-icon"></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form_add-card" name="addcardform" novalidate>
           <input type="text" id="name-mesto" name="name" class="popup__input popup__input_type_title" placeholder="Название" required minlength="2" maxlength="30">
@@ -58,7 +57,7 @@
 
     <article class="popup popup-viewing">
       <div class="popup-viewing__conteiner">
-        <button type="button" class="popup__close-button popup-viewing__close-button"><img src="./images/popup-close-icon.svg" alt="закрыт просмотр изображения" class="popup__close-icon popup-viewing__close-icon"></button>
+        <button type="button" class="popup__close-button popup-viewing__close-button"><img src="<%=require('./images/popup-close-icon.svg')%>" alt="закрыт просмотр изображения" class="popup__close-icon popup-viewing__close-icon"></button>
         <img class="popup-viewing__image" src="#" alt="#">
         <p class="popup-viewing__title"></p>
       </div>
@@ -67,12 +66,12 @@
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="#" alt="#">
-        <button type="button" class="card__delete-button"><img src="./images/card-delete.svg" alt="удалить" class="card__delete-icon"></button>
+        <button type="button" class="card__delete-button"><img src="<%=require('./images/card-delete.svg')%>" alt="удалить" class="card__delete-icon"></button>
         <h2 class="card__title"></h2>
-        <button type="button" class="card__like-button"><img src="./images/element-like.svg" alt="нравится" class="card__like-icon"></button>
+        <button type="button" class="card__like-button"><img src="<%=require('./images/element-like.svg')%>" alt="нравится" class="card__like-icon"></button>
       </li>
     </template>
   </div>
-  <script type="module" src="./scripts/index.js"></script>
+  <!--<script type="module" src="./scripts/index.js"></script>-->
 </body>
 </html>
