@@ -5,9 +5,15 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
+  background-image: url('../../../images/popup-close-icon.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
   border: 0;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.8s;
 }
 
 @media screen and (max-width: 767px) {
@@ -17,4 +23,9 @@
     top: -36px;
     right: 0px;
   }
+}
+
+.popup__close-button:hover {
+  opacity: 0.6;
+  transition: opacity 0.4s;
 }

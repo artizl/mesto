@@ -1,11 +1,16 @@
 .popup__form {
-  margin: 54px 0 0;
+  margin: 0 0 0;
   width: 430px;
 }
 
 @media screen and (max-width: 767px) {
   .popup__form {
-    margin: 75px 0 0;
+    margin: 0 0 0;
     width: 282px;
   }
+}
+
+.popup__form-confirm {
+  margin-top: 0;
+
 }
