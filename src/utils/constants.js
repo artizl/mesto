@@ -6,7 +6,7 @@ const profileButtonAdd = document.querySelector('.profile__add-button');
 const formElementAddCard = document.querySelector('.popup__form_add-card');
 const cardListSelector = ('.cards__list');
 const cardTemplate = document.querySelector('#card-template').content;
-const avatarEditButton = document.querySelector('.profile__avatar_edit-button');
+const avatarEditButton = document.querySelector('.profile__avatar-button');
 const formElementEditAvatar = document.querySelector('.popup__form_edit-avatar');
 const avatarElement = document.querySelector('.profile__avatar');
 

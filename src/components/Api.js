@@ -71,26 +71,4 @@ export default class Api {
   editAvatar(src) {
     return this._set('users/me/avatar', 'PATCH', {avatar: `${src.link}`})
   }
-  /*
-  _like(query, method, cardId) {
-    const options = {
-      method, 
-      headers: {
-        authorization: this._token
-      }
-    }
-    console.log(options);
-    return fetch(this._url(`${query}/${cardId}`), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
-  }
-
-  //метод постановки лайка карточке
-  likeCard(query, method, cardId) {
-    return this._like(query, method, cardId);
-  }
-
-  //метод удаления лайка с карточки
-  dislikeCard(query, method, cardId) {
-    return this._like(query, method, cardId);
-  }*/
 };

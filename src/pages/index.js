@@ -124,30 +124,6 @@ const handlePopupEditAvatar = (data) => {
   avatarElement.src = data.link;
 };
 
-/*
-const handleLikeClick = (cardId, isLiked, card) => {
-  console.log(isLiked);
-  if (isLiked === false) {
-    //отправляем запрос снятия лайка
-    api.dislikeCard('cards/likes', 'DELETE', cardId)
-      .then((data) => {
-        card.setLikes(data.likes);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
-    //отправляем запрос на установку лайка
-    api.likeCard('cards/likes', 'PUT', cardId)
-      .then((data) => {
-        card.setLikes(data.likes);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};*/
-
 
 
 //-------СЛУШАТЕЛИ СОБЫТИЙ-------//

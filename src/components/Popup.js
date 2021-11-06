@@ -31,6 +31,5 @@ export default class Popup{
   open() {
     this._popupElement.classList.add(this._openSelector);
     document.addEventListener('keydown', this._handleEscClose);
-    //this.setEventListeners();
   }
 };
