@@ -10,6 +10,13 @@ export default class Api {
     return `${this._address}/${this._groupId}/${query}`
   };
 
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+  }
+
   //запрос с авторизацией
   _get(query) {
     const options = {
@@ -19,11 +26,10 @@ export default class Api {
     }
 
     return fetch(this._url(query), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(res => this._getResponseData(res));
   };
 
   _set(query, method, body) {
-    console.log(body)
     const options = {
       method, 
       headers: {
@@ -32,9 +38,9 @@ export default class Api {
       },
       body: JSON.stringify(body),
     }
-    console.log(options)
+    
     return fetch(this._url(query), options)
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
+      .then(res => this._getResponseData(res));
   }
 
   getAppInfo() {
@@ -45,15 +51,6 @@ export default class Api {
   getUserInfo() {
     return this._get('users/me');
   };
-
-  //метод сохранения отредактированных данных пользователя на сервере
-  savingUserChanges(query, method, body) {
-    return this._set(query, method, body);
-  }
-  //метод сохранения новой карточки на сервере
-  savingNewCard(query, method, body) {
-    return this._set(query, method, body);
-  }
 
   removeCard(id) {
     return this._set(`cards/${id}`, 'DELETE')
@@ -68,7 +65,8 @@ export default class Api {
     return this._set(`cards/likes/${id}`, liked ? 'PUT' : 'DELETE')
   }
 
-  editAvatar(src) {
-    return this._set('users/me/avatar', 'PATCH', {avatar: `${src.link}`})
+  //метод сохранения отредактированных данных пользователя на сервере
+  saving(query, method, body) {
+    return this._set(query, method, body);
   }
 };

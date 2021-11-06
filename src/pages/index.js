@@ -62,16 +62,16 @@ const createCard = (data) => {
 
 //отрисовка отдельных элементов
 const renderer = (item) => {
-  cardList.addItem(createCard(item));
+  cardList.addItemAppend(createCard(item));
 };
 
 //добавление карт в контейнер 
 const handleCardFormSubmit = (data) => {
   newCardPopup.renderSaving(true);
-  console.log(data);
-  api.savingNewCard('cards', 'POST', data)
+  
+  api.saving('cards', 'POST', data)
     .then((data) => {
-      cardList.addItem(createCard(data));
+      cardList.addItemPrepend(createCard(data));
       newCardPopup.close();
     })
     .catch((err) => {
@@ -84,10 +84,19 @@ const handleCardFormSubmit = (data) => {
 
 //добавление на страницу новых данных пользователя
 const handleUserInfoFormSubmit = (data) => {
-  console.log(data);
-  userInfo.setUserInfo(data);
-  api.savingUserChanges('users/me', 'PATCH', data);
-  profilePopup.close();
+  profilePopup.renderSaving(true);
+  
+  api.saving('users/me', 'PATCH', data)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      profilePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      profilePopup.renderSaving(false);
+    })
 };
 
 //ставим лайк
@@ -103,6 +112,7 @@ const handleLikeClick = (card) => {
 //удаление карты
 const handleCardRemove = (card) => {
   removeCardPopup.open()
+
   removeCardPopup.setSubmitHandler(() => {
     renderLoading(removeCardPopupConfig.popupSelector, true, 'Да', 'Удаление...')
     api
@@ -120,8 +130,19 @@ const handleCardRemove = (card) => {
 }
 
 const handlePopupEditAvatar = (data) => {
-  api.editAvatar(data);
-  avatarElement.src = data.link;
+  editAvatarPopup.renderSaving(true);
+
+  api.saving('users/me/avatar', 'PATCH', {avatar: `${data.link}`})
+    .then((data) => {
+      avatarElement.src = data.avatar;
+      editAvatarPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      editAvatarPopup.renderSaving(false);
+    })
 };
 
 

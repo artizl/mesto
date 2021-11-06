@@ -25,13 +25,7 @@ export default class Card {
   //клонируем темпл эл-т
   _getTemplate() {
     const cardElement = this._cardTemplate.cloneNode(true).children[0];
-
     return cardElement;
-  };
-
-  //удаление карточки
-  _removeCardHandler = (evt) => {
-    evt.target.closest('.card').remove();
   };
 
   //проверка лайка
@@ -64,24 +58,15 @@ export default class Card {
       this._like.classList.remove('card__like-button_active');
     }
   }
-  /*
-  //ставим/удаляем лайк
-  setLikes(arr) {
-    this._cardElement.querySelector('.card__sum-like').textContent = arr.length;
-    this._likes = arr;
-    if (this._checkLike()) {
-      this._like.classList.add('card__like-button_active');
-    } else {
-      this._like.classList.remove('card__like-button_active');
-    }
-  }*/
+ 
 
   generateCard = () => {
     this._cardElement = this._getTemplate();
     this._like = this._cardElement.querySelector('.card__like-button');
     this._setEventListener();
-    this._cardElement.querySelector('.card__image').src = this._link;
-    this._cardElement.querySelector('.card__image').alt = this._name;
+    const cardImage =  this._cardElement.querySelector('.card__image');
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
     this._cardElement.querySelector('.card__title').textContent = this._name;
     this._cardElement.querySelector('.card__delete-button').classList.add(
       this._userId === this._ownerId ? 'card__delete-button_visible' : 'card__delete-button_hidden'
